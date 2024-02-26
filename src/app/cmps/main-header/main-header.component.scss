@@ -1,0 +1,101 @@
+:host {
+    position: sticky;
+    top: 0;
+    background-color: aqua;
+
+    .main-nav-container {
+        display: grid;
+        justify-content: space-between;
+        align-items: center;
+        grid-auto-flow: column;
+
+        .main-nav {
+            background-color: bisque;
+            ul {
+                display: grid;
+                grid-auto-flow: column;
+
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                li {
+                    a {
+                        display: grid;
+                        justify-content: center;
+                        align-items: center;
+                        min-width: 130px;
+                        min-height: 130px;
+                    }
+                }
+            }
+        }
+
+        .btn-toggle-menu {
+            background-color: inherit;
+            border: 0;
+            cursor: pointer;
+
+            .hamburger-lines {
+                height: 26px;
+                width: 32px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .line {
+                    height: 4px;
+                    width: 100%;
+                    background-color: aliceblue;
+                    transition: 0.4s;
+                }
+            }
+            &.menu-open {
+                .line1 {
+                    rotate: -45deg;
+                    transform-origin: right top;
+                }
+                .line2 {
+                    scale: 0;
+                }
+                .line3 {
+                    rotate: 45deg;
+                    transform-origin: right bottom;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 860px) {
+    .btn-toggle-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 860px) {
+    :host {
+        padding: 20px 0;
+        // height: 70px;
+        .btn-toggle-menu.menu-open + .main-nav {
+            grid-template-rows: 1fr;
+        }
+        .main-nav-container .main-nav {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            display: grid;
+            // grid-auto-flow: column;
+            grid-template-rows: 0fr;
+            overflow: hidden;
+            transition: grid-template-rows 1s;
+            align-items: end;
+            ul {
+                min-height: 0;
+                grid-auto-flow: row;
+                li {
+                }
+            }
+        }
+    }
+}

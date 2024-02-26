@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MainHeaderComponent } from '../cmps/main-header/main-header.component';
 
@@ -10,5 +10,6 @@ import { MainHeaderComponent } from '../cmps/main-header/main-header.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  @HostBinding('class.main-layout') layout:boolean = true
   title = 'elastic-job';
 }
